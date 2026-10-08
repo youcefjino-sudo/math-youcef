@@ -1,0 +1,3778 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالم الرياضيات | الأستاذ قلقال يوسف</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#6848f5;
+  --primary2:#8b5cf6;
+  --blue:#3185ff;
+  --cyan:#00b8d9;
+  --green:#00b894;
+  --orange:#ff9f43;
+  --pink:#e84393;
+  --red:#ff5c5c;
+  --yellow:#feca57;
+
+  --dark:#17142b;
+  --text:#29263d;
+  --muted:#77758a;
+  --bg:#f5f6fb;
+  --card:#ffffff;
+  --border:#e8e7f0;
+  --shadow:0 15px 45px rgba(50,35,100,.10);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Cairo",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+body.dark{
+  --dark:#f7f7ff;
+  --text:#eeeeff;
+  --muted:#aaa8bd;
+  --bg:#11101d;
+  --card:#1b192b;
+  --border:#302d45;
+  --shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+/* ---------- GENERAL ---------- */
+
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.section{
+  padding:85px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title .mini{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:#eeeaff;
+  color:var(--primary);
+  padding:7px 16px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+
+.section-title h2{
+  font-size:35px;
+  font-weight:900;
+}
+
+.section-title p{
+  color:var(--muted);
+  margin-top:8px;
+}
+
+.btn{
+  padding:12px 22px;
+  border-radius:14px;
+  font-weight:800;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  color:white;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  box-shadow:0 10px 25px rgba(104,72,245,.25);
+}
+
+.btn-blue{
+  color:white;
+  background:linear-gradient(135deg,#3185ff,#1769e8);
+}
+
+.btn-green{
+  color:white;
+  background:linear-gradient(135deg,#00b894,#00a884);
+}
+
+.btn-orange{
+  color:white;
+  background:linear-gradient(135deg,#ff9f43,#ff7f11);
+}
+
+.btn-danger{
+  color:white;
+  background:linear-gradient(135deg,#ff6b6b,#ee3d3d);
+}
+
+.btn-light{
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+body.dark header{
+  background:rgba(17,16,29,.88);
+}
+
+.navbar{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-weight:900;
+  font-size:21px;
+}
+
+.logo-icon{
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:23px;
+  background:linear-gradient(135deg,var(--primary),#9f7cff);
+  box-shadow:0 8px 22px rgba(104,72,245,.25);
+}
+
+.logo small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.nav-links a,
+.nav-links button{
+  padding:9px 12px;
+  border-radius:10px;
+  background:transparent;
+  color:var(--text);
+  font-weight:700;
+  font-size:14px;
+}
+
+.nav-links a:hover,
+.nav-links button:hover{
+  background:#f0edff;
+  color:var(--primary);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  font-size:18px;
+}
+
+.menu-btn{
+  display:none;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:90px 0 80px;
+  background:
+    radial-gradient(circle at 10% 20%,rgba(104,72,245,.16),transparent 28%),
+    radial-gradient(circle at 90% 10%,rgba(49,133,255,.13),transparent 25%),
+    radial-gradient(circle at 70% 90%,rgba(0,184,148,.10),transparent 25%);
+}
+
+.hero:before,
+.hero:after{
+  content:"";
+  position:absolute;
+  font-size:120px;
+  font-weight:900;
+  opacity:.035;
+  pointer-events:none;
+}
+
+.hero:before{
+  content:"π  Σ  √  x²";
+  left:2%;
+  top:8%;
+  transform:rotate(-10deg);
+}
+
+.hero:after{
+  content:"∫  Δ  ∞  θ";
+  right:2%;
+  bottom:3%;
+  transform:rotate(8deg);
+}
+
+.hero-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:50px;
+  align-items:center;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  background:#eeebff;
+  color:var(--primary);
+  border-radius:50px;
+  font-weight:800;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(40px,6vw,70px);
+  line-height:1.15;
+  font-weight:900;
+  letter-spacing:-2px;
+}
+
+.gradient-text{
+  background:linear-gradient(135deg,var(--primary),#a55cff,#3185ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:650px;
+  margin:20px 0 27px;
+  font-size:17px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.hero-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.math-display{
+  height:300px;
+  border-radius:24px;
+  display:grid;
+  place-items:center;
+  background:
+    linear-gradient(135deg,rgba(104,72,245,.08),rgba(49,133,255,.08)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 30px,
+      rgba(104,72,245,.05) 31px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 30px,
+      rgba(104,72,245,.05) 31px
+    );
+  position:relative;
+}
+
+.math-equation{
+  font-size:58px;
+  font-weight:900;
+  color:var(--primary);
+  text-align:center;
+}
+
+.floating-symbol{
+  position:absolute;
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:var(--card);
+  box-shadow:0 10px 25px rgba(50,35,100,.12);
+  display:grid;
+  place-items:center;
+  font-size:23px;
+  font-weight:900;
+}
+
+.s1{top:20px;right:25px;color:var(--pink)}
+.s2{bottom:20px;left:25px;color:var(--blue)}
+.s3{top:85px;left:20px;color:var(--green)}
+.s4{bottom:75px;right:30px;color:var(--orange)}
+
+/* ---------- STATS ---------- */
+
+.stats{
+  margin-top:-25px;
+  position:relative;
+  z-index:5;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:23px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.stat-icon{
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  background:#f0edff;
+  color:var(--primary);
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  font-weight:900;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ---------- FEATURES ---------- */
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.feature{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:25px;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.feature:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+
+.feature-icon{
+  width:57px;
+  height:57px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  margin-bottom:18px;
+}
+
+.feature h3{
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.feature p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.fi1{background:#eeeaff;color:var(--primary)}
+.fi2{background:#e8f2ff;color:var(--blue)}
+.fi3{background:#e4fff7;color:var(--green)}
+.fi4{background:#fff0df;color:var(--orange)}
+
+/* ---------- CONTENT ---------- */
+
+.toolbar{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.search-box{
+  flex:1;
+  min-width:220px;
+  position:relative;
+}
+
+.search-box input{
+  width:100%;
+  padding:12px 16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+}
+
+.filter{
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+}
+
+.content-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.lesson-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  transition:.3s;
+}
+
+.lesson-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.lesson-top{
+  padding:23px;
+  background:linear-gradient(135deg,#eeeaff,#f8f6ff);
+  position:relative;
+}
+
+.lesson-number{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:white;
+  color:var(--primary);
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.lesson-type{
+  position:absolute;
+  top:18px;
+  left:18px;
+  padding:5px 10px;
+  border-radius:20px;
+  background:white;
+  color:var(--primary);
+  font-size:11px;
+  font-weight:800;
+}
+
+.lesson-body{
+  padding:20px;
+}
+
+.lesson-body h3{
+  font-size:17px;
+  margin-bottom:8px;
+}
+
+.lesson-body p{
+  color:var(--muted);
+  font-size:13px;
+  min-height:52px;
+}
+
+.lesson-meta{
+  display:flex;
+  gap:8px;
+  margin:13px 0;
+  flex-wrap:wrap;
+}
+
+.tag{
+  padding:4px 9px;
+  border-radius:8px;
+  background:#f1f1f6;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.lesson-actions{
+  display:flex;
+  gap:8px;
+}
+
+.lesson-actions .btn{
+  flex:1;
+  padding:9px;
+  font-size:12px;
+}
+
+/* ---------- LEVELS ---------- */
+
+.level-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.level{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:25px;
+  text-align:center;
+  transition:.3s;
+}
+
+.level:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+}
+
+.level-icon{
+  width:75px;
+  height:75px;
+  border-radius:24px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 15px;
+  font-size:25px;
+  font-weight:900;
+}
+
+.level h3{
+  font-size:20px;
+}
+
+.level p{
+  color:var(--muted);
+  font-size:12px;
+  margin:5px 0 15px;
+}
+
+.level:nth-child(1) .level-icon{background:#eeeaff;color:var(--primary)}
+.level:nth-child(2) .level-icon{background:#e7f2ff;color:var(--blue)}
+.level:nth-child(3) .level-icon{background:#e5fff6;color:var(--green)}
+.level:nth-child(4) .level-icon{background:#fff0df;color:var(--orange)}
+
+/* ---------- CHALLENGE ---------- */
+
+.challenge{
+  background:linear-gradient(135deg,#1e1940,#382e78);
+  color:white;
+  border-radius:30px;
+  padding:40px;
+  position:relative;
+  overflow:hidden;
+}
+
+.challenge:after{
+  content:"∑  π  √  x²  Δ";
+  position:absolute;
+  left:-10px;
+  bottom:-30px;
+  font-size:90px;
+  font-weight:900;
+  opacity:.07;
+}
+
+.challenge-content{
+  position:relative;
+  z-index:1;
+  max-width:700px;
+}
+
+.challenge h2{
+  font-size:31px;
+  margin-bottom:10px;
+}
+
+.challenge p{
+  opacity:.75;
+  margin-bottom:22px;
+}
+
+.challenge-question{
+  background:rgba(255,255,255,.1);
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:15px;
+  font-size:18px;
+  font-weight:800;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  background:#151329;
+  color:white;
+  padding:60px 0 25px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:35px;
+}
+
+.footer-title{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+footer p{
+  color:#aaa7bd;
+  font-size:13px;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.footer-links a{
+  color:#aaa7bd;
+  font-size:13px;
+}
+
+.footer-links a:hover{
+  color:white;
+}
+
+.copyright{
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  color:#77748c;
+  font-size:12px;
+}
+
+/* ---------- MODALS ---------- */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:rgba(12,10,25,.65);
+  backdrop-filter:blur(7px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(560px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.modal-head h2{
+  font-size:22px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+  font-size:18px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:800;
+  font-size:13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+}
+
+.form-group textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.login-icon{
+  width:75px;
+  height:75px;
+  border-radius:23px;
+  background:#eeeaff;
+  color:var(--primary);
+  display:grid;
+  place-items:center;
+  font-size:31px;
+  margin:0 auto 15px;
+}
+
+.login-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.login-title h2{
+  font-size:25px;
+}
+
+.login-title p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard{
+  position:fixed;
+  inset:0;
+  z-index:2500;
+  background:var(--bg);
+  display:none;
+  overflow:auto;
+}
+
+.dashboard.show{
+  display:block;
+}
+
+.dash-header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+}
+
+.dash-nav{
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.dash-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+}
+
+.dash-actions{
+  display:flex;
+  gap:8px;
+}
+
+.dash-body{
+  padding:30px 0 60px;
+}
+
+.dash-welcome{
+  margin-bottom:25px;
+}
+
+.dash-welcome h1{
+  font-size:28px;
+}
+
+.dash-welcome p{
+  color:var(--muted);
+}
+
+.dash-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.dash-stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+}
+
+.dash-stat .num{
+  font-size:29px;
+  font-weight:900;
+}
+
+.dash-stat span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.dash-tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding-bottom:5px;
+  margin-bottom:20px;
+}
+
+.dash-tab{
+  white-space:nowrap;
+  padding:10px 15px;
+  border-radius:11px;
+  background:var(--card);
+  border:1px solid var(--border);
+  color:var(--text);
+  font-weight:800;
+}
+
+.dash-tab.active{
+  background:var(--primary);
+  color:white;
+  border-color:var(--primary);
+}
+
+.dash-panel{
+  display:none;
+}
+
+.dash-panel.active{
+  display:block;
+}
+
+.panel-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.panel-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.panel-head h2{
+  font-size:19px;
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.quick{
+  padding:18px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  text-align:center;
+  color:var(--text);
+  font-weight:800;
+}
+
+.quick-icon{
+  font-size:25px;
+  display:block;
+  margin-bottom:7px;
+}
+
+.table-wrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px;
+}
+
+th,
+td{
+  padding:12px;
+  border-bottom:1px solid var(--border);
+  text-align:right;
+  font-size:13px;
+}
+
+th{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.table-btn{
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.empty{
+  text-align:center;
+  padding:35px;
+  color:var(--muted);
+}
+
+/* ---------- STUDENT ---------- */
+
+.student-profile{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.profile-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+}
+
+.profile-top{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.avatar{
+  width:65px;
+  height:65px;
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--primary),#a56aff);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  font-weight:900;
+}
+
+.progress{
+  height:10px;
+  background:#ececf3;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--primary),#9d75ff);
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.badge-item{
+  width:75px;
+  text-align:center;
+  font-size:10px;
+  color:var(--muted);
+}
+
+.badge-circle{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:#fff1d9;
+  color:var(--orange);
+  display:grid;
+  place-items:center;
+  margin:auto auto 4px;
+  font-size:21px;
+}
+
+.rank-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.rank-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-radius:13px;
+  background:var(--bg);
+}
+
+.rank-number{
+  width:32px;
+  height:32px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  background:#eeeaff;
+  color:var(--primary);
+}
+
+/* ---------- QUIZ ---------- */
+
+.quiz-question{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:18px;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  padding:13px 15px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  border-radius:13px;
+  text-align:right;
+  font-weight:700;
+  transition:.2s;
+}
+
+.option:hover{
+  border-color:var(--primary);
+}
+
+.option.correct{
+  background:#e4fff7;
+  border-color:var(--green);
+  color:#008b70;
+}
+
+.option.wrong{
+  background:#ffe8e8;
+  border-color:var(--red);
+  color:#c52f2f;
+}
+
+/* ---------- TOAST ---------- */
+
+.toast{
+  position:fixed;
+  left:25px;
+  bottom:25px;
+  z-index:5000;
+  background:#17142b;
+  color:white;
+  padding:13px 18px;
+  border-radius:13px;
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+  transform:translateY(100px);
+  opacity:0;
+  transition:.3s;
+  font-size:13px;
+  font-weight:700;
+}
+
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:1000px){
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:76px;
+    right:4%;
+    left:4%;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:10px;
+    flex-direction:column;
+    box-shadow:var(--shadow);
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links a,
+  .nav-links button{
+    width:100%;
+    text-align:center;
+  }
+
+  .menu-btn{
+    display:grid;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .feature-grid,
+  .level-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .content-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats-grid,
+  .dash-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .section{
+    padding:60px 0;
+  }
+
+  .hero{
+    padding:60px 0;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .math-display{
+    height:230px;
+  }
+
+  .math-equation{
+    font-size:42px;
+  }
+
+  .feature-grid,
+  .level-grid,
+  .content-grid,
+  .student-profile{
+    grid-template-columns:1fr;
+  }
+
+  .stats-grid,
+  .dash-stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+
+  .challenge{
+    padding:28px 20px;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+  }
+
+  .nav-actions .btn{
+    display:none;
+  }
+
+  .dash-stats{
+    gap:10px;
+  }
+}
+
+@media(max-width:430px){
+  .stats-grid,
+  .dash-stats,
+  .quick-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="container navbar">
+
+    <a class="logo" href="#home">
+      <div class="logo-icon">∑</div>
+      <div>
+        عالم الرياضيات
+        <small>مع الأستاذ قلقال يوسف</small>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#lessons">الدروس</a>
+      <a href="#levels">المستويات</a>
+      <a href="#challenge">التحدي</a>
+      <button onclick="openStudent()">👨‍🎓 فضاء التلميذ</button>
+      <button onclick="openTeacher()">👨‍🏫 فضاء الأستاذ</button>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="toggleDark()" title="الوضع الليلي">🌙</button>
+      <button class="icon-btn menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="badge">✨ منصة تعليمية في الرياضيات</span>
+
+      <h1>
+        مرحباً بك في
+        <span class="gradient-text">عالم الرياضيات</span>
+      </h1>
+
+      <p>
+        منصة تعليمية مخصصة لتلاميذ التعليم المتوسط والأساتذة،
+        تجمع بين الدروس والتمارين والاختبارات والتحديات في مكان واحد.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="document.getElementById('lessons').scrollIntoView()">📚 اكتشف الدروس</button>
+        <button class="btn btn-light" onclick="openStudent()">🎓 دخول التلميذ</button>
+        <button class="btn btn-blue" onclick="openTeacher()">👨‍🏫 فضاء الأستاذ</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="math-display">
+
+        <div class="floating-symbol s1">π</div>
+        <div class="floating-symbol s2">√</div>
+        <div class="floating-symbol s3">Σ</div>
+        <div class="floating-symbol s4">∞</div>
+
+        <div class="math-equation">
+          x² + y² = r²
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+
+      <div class="stat">
+        <div class="stat-icon">📚</div>
+        <div>
+          <strong id="statLessons">0</strong>
+          <span>درس و مورد تعليمي</span>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">📝</div>
+        <div>
+          <strong id="statExercises">0</strong>
+          <span>تمرين واختبار</span>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">👨‍🎓</div>
+        <div>
+          <strong id="statStudents">0</strong>
+          <span>تلميذ مسجل</span>
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">🏆</div>
+        <div>
+          <strong>100%</strong>
+          <span>تعلم وتحفيز</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-title">
+      <span class="mini">🚀 ماذا نقدم؟</span>
+      <h2>كل ما تحتاجه في مكان واحد</h2>
+      <p>تعلم، تدرب، اختبر نفسك وتابع تقدمك.</p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon fi1">📖</div>
+        <h3>دروس منظمة</h3>
+        <p>دروس الرياضيات مرتبة حسب المستوى والوحدة.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon fi2">🧠</div>
+        <h3>تمارين تفاعلية</h3>
+        <p>تدرب على مختلف أنواع التمارين والأسئلة.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon fi3">🏆</div>
+        <h3>نظام النقاط</h3>
+        <p>اجمع النقاط وافتح مستويات وشارات جديدة.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon fi4">👨‍🏫</div>
+        <h3>فضاء الأستاذ</h3>
+        <p>إدارة الدروس والتلاميذ والنتائج والموارد.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= LESSONS ================= -->
+
+<section class="section" id="lessons">
+  <div class="container">
+
+    <div class="section-title">
+      <span class="mini">📚 المكتبة التعليمية</span>
+      <h2>الدروس والموارد</h2>
+      <p>ابحث عن الدرس الذي تحتاجه واختر مستواك.</p>
+    </div>
+
+    <div class="toolbar">
+
+      <div class="search-box">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="🔎 ابحث عن درس، تمرين، موضوع..."
+          oninput="renderLessons()"
+        >
+      </div>
+
+      <select id="levelFilter" class="filter" onchange="renderLessons()">
+        <option value="all">كل المستويات</option>
+        <option value="1 متوسط">1 متوسط</option>
+        <option value="2 متوسط">2 متوسط</option>
+        <option value="3 متوسط">3 متوسط</option>
+        <option value="4 متوسط">4 متوسط</option>
+      </select>
+
+      <select id="typeFilter" class="filter" onchange="renderLessons()">
+        <option value="all">كل الموارد</option>
+        <option value="درس">دروس</option>
+        <option value="تمرين">تمارين</option>
+        <option value="ملخص">ملخصات</option>
+        <option value="اختبار">اختبارات</option>
+      </select>
+
+    </div>
+
+    <div class="content-grid" id="lessonsGrid"></div>
+
+  </div>
+</section>
+
+
+<!-- ================= LEVELS ================= -->
+
+<section class="section" id="levels">
+  <div class="container">
+
+    <div class="section-title">
+      <span class="mini">🎓 اختر مستواك</span>
+      <h2>مستويات التعليم المتوسط</h2>
+      <p>ابدأ من المستوى الذي تدرسه.</p>
+    </div>
+
+    <div class="level-grid">
+
+      <div class="level">
+        <div class="level-icon">1م</div>
+        <h3>السنة الأولى</h3>
+        <p>أساسيات الرياضيات</p>
+        <button class="btn btn-primary" onclick="selectLevel('1 متوسط')">دخول</button>
+      </div>
+
+      <div class="level">
+        <div class="level-icon">2م</div>
+        <h3>السنة الثانية</h3>
+        <p>تطوير المهارات</p>
+        <button class="btn btn-blue" onclick="selectLevel('2 متوسط')">دخول</button>
+      </div>
+
+      <div class="level">
+        <div class="level-icon">3م</div>
+        <h3>السنة الثالثة</h3>
+        <p>الاستعداد للمستوى الأعلى</p>
+        <button class="btn btn-green" onclick="selectLevel('3 متوسط')">دخول</button>
+      </div>
+
+      <div class="level">
+        <div class="level-icon">4م</div>
+        <h3>السنة الرابعة</h3>
+        <p>التحضير للشهادة</p>
+        <button class="btn btn-orange" onclick="selectLevel('4 متوسط')">دخول</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= CHALLENGE ================= -->
+
+<section class="section" id="challenge">
+  <div class="container">
+
+    <div class="challenge">
+
+      <div class="challenge-content">
+
+        <span class="badge">🔥 تحدي اليوم</span>
+
+        <h2>هل تستطيع حل المسألة؟</h2>
+
+        <p>
+          اختبر معلوماتك وحاول الحصول على النقاط.
+        </p>
+
+        <div class="challenge-question">
+          إذا كان x + 5 = 12، فما قيمة x؟
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-light" onclick="challengeAnswer(5)">x = 5</button>
+          <button class="btn btn-light" onclick="challengeAnswer(7)">x = 7</button>
+          <button class="btn btn-light" onclick="challengeAnswer(12)">x = 12</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-title">🧮 عالم الرياضيات</div>
+        <p>
+          منصة تعليمية للرياضيات من تصميم الأستاذ
+          <strong>قلقال يوسف</strong>.
+        </p>
+        <p style="margin-top:10px">
+          متوسطة الشهيد محمد بن زرام خلوية
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-title">روابط</div>
+        <div class="footer-links">
+          <a href="#home">الرئيسية</a>
+          <a href="#lessons">الدروس</a>
+          <a href="#levels">المستويات</a>
+          <a href="#challenge">التحدي</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">تواصل</div>
+        <div class="footer-links">
+          <span>👨‍🏫 الأستاذ: قلقال يوسف</span>
+          <span>📧 youcefjino@gmail.com</span>
+          <span>📚 مادة الرياضيات</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 عالم الرياضيات — جميع الحقوق محفوظة
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ================= STUDENT LOGIN ================= -->
+
+<div class="modal" id="studentModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>🎓 فضاء التلميذ</h2>
+      <button class="close" onclick="closeModal('studentModal')">×</button>
+    </div>
+
+    <div class="login-icon">👨‍🎓</div>
+
+    <div class="login-title">
+      <h2>مرحباً بك أيها التلميذ</h2>
+      <p>أنشئ حسابك وابدأ رحلة التعلم.</p>
+    </div>
+
+    <div class="form-group">
+      <label>اسم التلميذ</label>
+      <input id="studentName" placeholder="اكتب اسمك ولقبك">
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label>المستوى</label>
+        <select id="studentLevel">
+          <option>1 متوسط</option>
+          <option>2 متوسط</option>
+          <option>3 متوسط</option>
+          <option>4 متوسط</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>القسم</label>
+        <input id="studentClass" placeholder="مثال: 4م3">
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary" style="width:100%" onclick="studentLogin()">
+      🚀 دخول إلى فضاء التلميذ
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ================= TEACHER LOGIN ================= -->
+
+<div class="modal" id="teacherModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>👨‍🏫 فضاء الأستاذ</h2>
+      <button class="close" onclick="closeModal('teacherModal')">×</button>
+    </div>
+
+    <div class="login-icon">🔐</div>
+
+    <div class="login-title">
+      <h2>دخول الأستاذ</h2>
+      <p>إدارة المحتوى والتلاميذ والنتائج.</p>
+    </div>
+
+    <div class="form-group">
+      <label>كلمة المرور</label>
+      <input id="teacherPassword" type="password" placeholder="كلمة المرور">
+    </div>
+
+    <button class="btn btn-primary" style="width:100%" onclick="teacherLogin()">
+      🔓 دخول
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ================= ADD CONTENT ================= -->
+
+<div class="modal" id="contentModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>➕ إضافة مورد جديد</h2>
+      <button class="close" onclick="closeModal('contentModal')">×</button>
+    </div>
+
+    <div class="form-group">
+      <label>نوع المورد</label>
+      <select id="contentType">
+        <option value="درس">درس</option>
+        <option value="تمرين">تمرين</option>
+        <option value="ملخص">ملخص</option>
+        <option value="اختبار">اختبار</option>
+        <option value="إعلان">إعلان</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>عنوان المورد</label>
+      <input id="contentTitle" placeholder="مثال: الأعداد النسبية">
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label>المستوى</label>
+        <select id="contentLevel">
+          <option>1 متوسط</option>
+          <option>2 متوسط</option>
+          <option>3 متوسط</option>
+          <option>4 متوسط</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>الوحدة</label>
+        <input id="contentUnit" placeholder="مثال: الحساب">
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>الوصف</label>
+      <textarea id="contentDescription" placeholder="اكتب وصفاً مختصراً للمورد"></textarea>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%" onclick="saveContent()">
+      💾 حفظ المورد
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ================= QUIZ MODAL ================= -->
+
+<div class="modal" id="quizModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <h2>🧠 اختبار سريع</h2>
+      <button class="close" onclick="closeModal('quizModal')">×</button>
+    </div>
+
+    <div id="quizArea"></div>
+
+  </div>
+</div>
+
+
+<!-- ================= TEACHER DASHBOARD ================= -->
+
+<div class="dashboard" id="teacherDashboard">
+
+  <div class="dash-header">
+    <div class="container dash-nav">
+
+      <div class="dash-brand">
+        <div class="logo-icon">∑</div>
+        <div>
+          لوحة الأستاذ
+          <small style="display:block;color:var(--muted);font-size:10px">
+            قلقال يوسف
+          </small>
+        </div>
+      </div>
+
+      <div class="dash-actions">
+        <button class="btn btn-primary" onclick="openAdd('درس')">➕ إضافة</button>
+        <button class="icon-btn" onclick="closeDashboard()">✕</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container dash-body">
+
+    <div class="dash-welcome">
+      <h1>👋 مرحباً أستاذ قلقال يوسف</h1>
+      <p>من هنا يمكنك إدارة منصتك التعليمية بالكامل.</p>
+    </div>
+
+    <div class="dash-stats">
+
+      <div class="dash-stat">
+        <div class="num" id="dashContents">0</div>
+        <span>إجمالي الموارد</span>
+      </div>
+
+      <div class="dash-stat">
+        <div class="num" id="dashStudents">0</div>
+        <span>التلاميذ</span>
+      </div>
+
+      <div class="dash-stat">
+        <div class="num" id="dashLessons">0</div>
+        <span>الدروس</span>
+      </div>
+
+      <div class="dash-stat">
+        <div class="num" id="dashExercises">0</div>
+        <span>التمارين والاختبارات</span>
+      </div>
+
+    </div>
+
+    <div class="dash-tabs">
+
+      <button class="dash-tab active" onclick="dashTab('overview',this)">📊 الرئيسية</button>
+
+      <button class="dash-tab" onclick="dashTab('content',this)">📚 المحتوى</button>
+
+      <button class="dash-tab" onclick="dashTab('students',this)">👨‍🎓 التلاميذ</button>
+
+      <button class="dash-tab" onclick="dashTab('results',this)">🏆 النتائج</button>
+
+      <button class="dash-tab" onclick="dashTab('settings',this)">⚙️ الإعدادات</button>
+
+    </div>
+
+
+    <!-- OVERVIEW -->
+
+    <div class="dash-panel active" id="panel-overview">
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>⚡ أدوات سريعة</h2>
+        </div>
+
+        <div class="quick-grid">
+
+          <button class="quick" onclick="openAdd('درس')">
+            <span class="quick-icon">📖</span>
+            إضافة درس
+          </button>
+
+          <button class="quick" onclick="openAdd('تمرين')">
+            <span class="quick-icon">📝</span>
+            إضافة تمرين
+          </button>
+
+          <button class="quick" onclick="openAdd('ملخص')">
+            <span class="quick-icon">📑</span>
+            إضافة ملخص
+          </button>
+
+          <button class="quick" onclick="openAdd('إعلان')">
+            <span class="quick-icon">📢</span>
+            إضافة إعلان
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>📌 آخر الموارد</h2>
+          <button class="btn btn-light" onclick="dashTab('content')">عرض الكل</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>العنوان</th>
+                <th>النوع</th>
+                <th>المستوى</th>
+                <th>التاريخ</th>
+              </tr>
+            </thead>
+
+            <tbody id="recentContent"></tbody>
+
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="dash-panel" id="panel-content">
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>📚 إدارة المحتوى</h2>
+
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="openAdd('درس')">➕ إضافة مورد</button>
+            <button class="btn btn-green" onclick="exportContents()">⬇️ تصدير</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>العنوان</th>
+                <th>النوع</th>
+                <th>المستوى</th>
+                <th>الوحدة</th>
+                <th>الإجراء</th>
+              </tr>
+            </thead>
+
+            <tbody id="contentTable"></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- STUDENTS -->
+
+    <div class="dash-panel" id="panel-students">
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>👨‍🎓 التلاميذ</h2>
+
+          <button class="btn btn-green" onclick="exportStudents()">
+            ⬇️ تصدير التلاميذ
+          </button>
+        </div>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>الاسم</th>
+                <th>المستوى</th>
+                <th>القسم</th>
+                <th>النقاط</th>
+                <th>المستوى</th>
+                <th>الإجراء</th>
+              </tr>
+            </thead>
+
+            <tbody id="studentTable"></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div class="dash-panel" id="panel-results">
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>🏆 ترتيب التلاميذ</h2>
+        </div>
+
+        <div class="rank-list" id="teacherRanking"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SETTINGS -->
+
+    <div class="dash-panel" id="panel-settings">
+
+      <div class="panel-card">
+
+        <div class="panel-head">
+          <h2>⚙️ إعدادات المنصة</h2>
+        </div>
+
+        <button class="btn btn-danger" onclick="clearAllData()">
+          🗑️ حذف جميع البيانات المحلية
+        </button>
+
+        <p style="margin-top:12px;color:var(--muted);font-size:12px">
+          تنبيه: هذا يحذف التلاميذ والموارد التي أضفتها من هذا المتصفح فقط.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= STUDENT DASHBOARD ================= -->
+
+<div class="dashboard" id="studentDashboard">
+
+  <div class="dash-header">
+
+    <div class="container dash-nav">
+
+      <div class="dash-brand">
+        <div class="logo-icon">🎓</div>
+
+        <div>
+          فضاء التلميذ
+          <small id="studentDashName" style="display:block;color:var(--muted);font-size:10px"></small>
+        </div>
+
+      </div>
+
+      <div class="dash-actions">
+        <button class="btn btn-primary" onclick="startQuiz()">🧠 اختبار</button>
+        <button class="icon-btn" onclick="closeStudentDashboard()">✕</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="container dash-body">
+
+    <div class="dash-welcome">
+
+      <h1 id="studentWelcome">👋 مرحباً</h1>
+
+      <p>
+        واصل التعلم واجمع النقاط وحقق إنجازات جديدة.
+      </p>
+
+    </div>
+
+
+    <div class="student-profile">
+
+      <div class="profile-card">
+
+        <div class="profile-top">
+
+          <div class="avatar" id="studentAvatar">ت</div>
+
+          <div>
+            <h3 id="profileName">التلميذ</h3>
+            <p id="profileInfo" style="color:var(--muted);font-size:12px"></p>
+          </div>
+
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;font-weight:800">
+          <span>التقدم</span>
+          <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress">
+          <span id="progressBar" style="width:0%"></span>
+        </div>
+
+      </div>
+
+
+      <div class="profile-card">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div>
+            <span style="color:var(--muted);font-size:12px">النقاط</span>
+            <div style="font-size:28px;font-weight:900" id="studentXP">0 XP</div>
+          </div>
+
+          <div style="font-size:38px">🏆</div>
+        </div>
+
+        <div style="color:var(--muted);font-size:12px">
+          المستوى الحالي:
+          <strong id="studentLevelNumber">المبتدئ</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel-card" style="margin-top:18px">
+
+      <div class="panel-head">
+        <h2>🎖️ شاراتك</h2>
+      </div>
+
+      <div class="badges">
+
+        <div class="badge-item">
+          <div class="badge-circle">🌟</div>
+          البداية
+        </div>
+
+        <div class="badge-item">
+          <div class="badge-circle">🔥</div>
+          المثابر
+        </div>
+
+        <div class="badge-item">
+          <div class="badge-circle">🧠</div>
+          ذكي
+        </div>
+
+        <div class="badge-item">
+          <div class="badge-circle">🏆</div>
+          البطل
+        </div>
+
+        <div class="badge-item">
+          <div class="badge-circle">🚀</div>
+          المتفوق
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="panel-card">
+
+      <div class="panel-head">
+
+        <h2>📚 موارد مقترحة</h2>
+
+        <button class="btn btn-light" onclick="closeStudentDashboard();document.getElementById('lessons').scrollIntoView()">
+          المكتبة
+        </button>
+
+      </div>
+
+      <div class="content-grid" id="studentLessons"></div>
+
+    </div>
+
+
+    <div class="panel-card">
+
+      <div class="panel-head">
+        <h2>🏆 ترتيب التلاميذ</h2>
+      </div>
+
+      <div class="rank-list" id="studentRanking"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   البيانات الافتراضية
+========================================================= */
+
+const defaultContents = [
+
+  {
+    id:1,
+    type:"درس",
+    title:"الأعداد النسبية",
+    level:"1 متوسط",
+    unit:"الأعداد",
+    description:"مراجعة وفهم الأعداد النسبية والعمليات عليها."
+  },
+
+  {
+    id:2,
+    type:"درس",
+    title:"القوى ذات الأسس الصحيحة",
+    level:"2 متوسط",
+    unit:"الحساب",
+    description:"تعرف على القوى وقواعد الحساب باستعمالها."
+  },
+
+  {
+    id:3,
+    type:"ملخص",
+    title:"القاسم المشترك الأكبر PGCD",
+    level:"3 متوسط",
+    unit:"الحساب",
+    description:"ملخص شامل حول القاسم المشترك الأكبر وخوارزمية الفروق."
+  },
+
+  {
+    id:4,
+    type:"درس",
+    title:"مبرهنة فيثاغورس",
+    level:"4 متوسط",
+    unit:"الهندسة",
+    description:"شرح مبسط لمبرهنة فيثاغورس وتطبيقاتها."
+  },
+
+  {
+    id:5,
+    type:"تمرين",
+    title:"تمارين حول الكتابة العلمية",
+    level:"4 متوسط",
+    unit:"الأعداد",
+    description:"سلسلة تمارين للتدرب على الكتابة العلمية."
+  },
+
+  {
+    id:6,
+    type:"اختبار",
+    title:"اختبار الفصل الأول",
+    level:"4 متوسط",
+    unit:"مراجعة",
+    description:"اختبار تدريبي شامل للتحضير للفروض."
+  }
+
+];
+
+
+/* =========================================================
+   LocalStorage
+========================================================= */
+
+function getContents(){
+
+  const data = localStorage.getItem("math_contents");
+
+  if(!data){
+    localStorage.setItem("math_contents",JSON.stringify(defaultContents));
+    return [...defaultContents];
+  }
+
+  return JSON.parse(data);
+}
+
+
+function saveContents(data){
+  localStorage.setItem("math_contents",JSON.stringify(data));
+}
+
+
+function getStudents(){
+
+  return JSON.parse(
+    localStorage.getItem("math_students") || "[]"
+  );
+
+}
+
+
+function saveStudents(data){
+
+  localStorage.setItem(
+    "math_students",
+    JSON.stringify(data)
+  );
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+  renderLessons();
+  updatePublicStats();
+
+});
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function toggleMenu(){
+
+  document.getElementById("navLinks")
+    .classList.toggle("show");
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+function toggleDark(){
+
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "math_dark",
+    document.body.classList.contains("dark")
+  );
+
+}
+
+if(localStorage.getItem("math_dark")==="true"){
+  document.body.classList.add("dark");
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openModal(id){
+
+  document.getElementById(id).classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+  document.getElementById(id).classList.remove("show");
+
+}
+
+
+function openStudent(){
+
+  openModal("studentModal");
+
+}
+
+
+function openTeacher(){
+
+  openModal("teacherModal");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(()=>{
+    toast.classList.remove("show");
+  },3000);
+
+}
+
+
+/* =========================================================
+   PUBLIC STATS
+========================================================= */
+
+function updatePublicStats(){
+
+  const contents = getContents();
+  const students = getStudents();
+
+  document.getElementById("statLessons").textContent =
+    contents.length;
+
+  document.getElementById("statExercises").textContent =
+    contents.filter(x =>
+      x.type==="تمرين" || x.type==="اختبار"
+    ).length;
+
+  document.getElementById("statStudents").textContent =
+    students.length;
+
+}
+
+
+/* =========================================================
+   LESSONS
+========================================================= */
+
+function renderLessons(){
+
+  const grid = document.getElementById("lessonsGrid");
+
+  if(!grid) return;
+
+  const contents = getContents();
+
+  const search =
+    (document.getElementById("searchInput")?.value || "")
+      .toLowerCase();
+
+  const level =
+    document.getElementById("levelFilter")?.value || "all";
+
+  const type =
+    document.getElementById("typeFilter")?.value || "all";
+
+  const filtered = contents.filter(item=>{
+
+    const matchesSearch =
+      item.title.toLowerCase().includes(search) ||
+      item.description.toLowerCase().includes(search) ||
+      item.unit.toLowerCase().includes(search);
+
+    const matchesLevel =
+      level==="all" || item.level===level;
+
+    const matchesType =
+      type==="all" || item.type===type;
+
+    return matchesSearch &&
+           matchesLevel &&
+           matchesType;
+
+  });
+
+
+  if(!filtered.length){
+
+    grid.innerHTML = `
+      <div class="empty" style="grid-column:1/-1">
+        🔎 لا توجد موارد مطابقة للبحث.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  grid.innerHTML = filtered.map((item,index)=>`
+
+    <div class="lesson-card">
+
+      <div class="lesson-top">
+
+        <div class="lesson-number">
+          ${index+1}
+        </div>
+
+        <span class="lesson-type">
+          ${item.type}
+        </span>
+
+      </div>
+
+      <div class="lesson-body">
+
+        <h3>${escapeHTML(item.title)}</h3>
+
+        <p>
+          ${escapeHTML(item.description)}
+        </p>
+
+        <div class="lesson-meta">
+          <span class="tag">🎓 ${escapeHTML(item.level)}</span>
+          <span class="tag">📘 ${escapeHTML(item.unit)}</span>
+        </div>
+
+        <div class="lesson-actions">
+
+          <button class="btn btn-primary"
+            onclick="openResource(${item.id})">
+            👁️ فتح
+          </button>
+
+          ${
+            item.type==="تمرين" || item.type==="اختبار"
+            ?
+            `<button class="btn btn-green"
+              onclick="startQuiz()">
+              🧠 حل
+            </button>`
+            :
+            ""
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+/* =========================================================
+   LEVEL FILTER
+========================================================= */
+
+function selectLevel(level){
+
+  document.getElementById("levelFilter").value = level;
+
+  renderLessons();
+
+  document.getElementById("lessons").scrollIntoView();
+
+}
+
+
+/* =========================================================
+   OPEN RESOURCE
+========================================================= */
+
+function openResource(id){
+
+  const contents = getContents();
+
+  const item = contents.find(x=>x.id===id);
+
+  if(!item) return;
+
+  if(item.type==="تمرين" || item.type==="اختبار"){
+
+    startQuiz();
+
+    return;
+
+  }
+
+  alert(
+    "📚 "+item.title+
+    "\n\n"+
+    item.description+
+    "\n\n"+
+    "المستوى: "+item.level+
+    "\nالوحدة: "+item.unit
+  );
+
+}
+
+
+/* =========================================================
+   CHALLENGE
+========================================================= */
+
+function challengeAnswer(answer){
+
+  if(answer===7){
+
+    showToast("🎉 إجابة صحيحة! أحسنت.");
+
+    const current =
+      parseInt(localStorage.getItem("challenge_points") || "0");
+
+    localStorage.setItem(
+      "challenge_points",
+      current+10
+    );
+
+  }else{
+
+    showToast("❌ حاول مرة أخرى.");
+
+  }
+
+}
+
+
+/* =========================================================
+   STUDENT LOGIN
+========================================================= */
+
+function studentLogin(){
+
+  const name =
+    document.getElementById("studentName").value.trim();
+
+  const level =
+    document.getElementById("studentLevel").value;
+
+  const cls =
+    document.getElementById("studentClass").value.trim();
+
+  if(!name){
+
+    showToast("⚠️ اكتب اسم التلميذ أولاً.");
+
+    return;
+
+  }
+
+
+  let students = getStudents();
+
+  let student =
+    students.find(
+      x=>x.name.toLowerCase()===name.toLowerCase()
+    );
+
+
+  if(!student){
+
+    student = {
+
+      id:Date.now(),
+
+      name:name,
+
+      level:level,
+
+      className:cls,
+
+      xp:0,
+
+      quizzes:0,
+
+      created:new Date().toLocaleDateString("ar-DZ")
+
+    };
+
+    students.push(student);
+
+  }else{
+
+    student.level = level;
+
+    student.className = cls;
+
+  }
+
+
+  saveStudents(students);
+
+  localStorage.setItem(
+    "current_student",
+    JSON.stringify(student)
+  );
+
+  closeModal("studentModal");
+
+  openStudentDashboard(student);
+
+  updatePublicStats();
+
+}
+
+
+/* =========================================================
+   STUDENT DASHBOARD
+========================================================= */
+
+function openStudentDashboard(student){
+
+  document.getElementById("studentDashboard")
+    .classList.add("show");
+
+  document.getElementById("studentDashName")
+    .textContent = student.name;
+
+  document.getElementById("studentWelcome")
+    .textContent = "👋 مرحباً "+student.name;
+
+  document.getElementById("profileName")
+    .textContent = student.name;
+
+  document.getElementById("profileInfo")
+    .textContent =
+      student.level+
+      " • "+
+      (student.className || "بدون قسم");
+
+  document.getElementById("studentAvatar")
+    .textContent =
+      student.name.charAt(0);
+
+  document.getElementById("studentXP")
+    .textContent = student.xp+" XP";
+
+  const levelName =
+    calculateStudentLevel(student.xp);
+
+  document.getElementById("studentLevelNumber")
+    .textContent = levelName.name;
+
+  const percent =
+    Math.min(100,levelName.progress);
+
+  document.getElementById("progressPercent")
+    .textContent = percent+"%";
+
+  document.getElementById("progressBar")
+    .style.width = percent+"%";
+
+  renderStudentLessons(student);
+
+  renderRanking("studentRanking");
+
+}
+
+
+function closeStudentDashboard(){
+
+  document.getElementById("studentDashboard")
+    .classList.remove("show");
+
+}
+
+
+function calculateStudentLevel(xp){
+
+  if(xp<50)
+    return {name:"المبتدئ",progress:(xp/50)*100};
+
+  if(xp<150)
+    return {name:"المتدرب",progress:((xp-50)/100)*100};
+
+  if(xp<300)
+    return {name:"المتميز",progress:((xp-150)/150)*100};
+
+  if(xp<500)
+    return {name:"المتفوق",progress:((xp-300)/200)*100};
+
+  return {name:"بطل الرياضيات",progress:100};
+
+}
+
+
+/* =========================================================
+   STUDENT LESSONS
+========================================================= */
+
+function renderStudentLessons(student){
+
+  const grid =
+    document.getElementById("studentLessons");
+
+  const contents =
+    getContents()
+      .filter(x=>x.level===student.level)
+      .slice(0,6);
+
+  if(!contents.length){
+
+    grid.innerHTML =
+      `<div class="empty">لا توجد موارد لهذا المستوى حالياً.</div>`;
+
+    return;
+
+  }
+
+  grid.innerHTML =
+    contents.map((item,index)=>`
+
+      <div class="lesson-card">
+
+        <div class="lesson-top">
+
+          <div class="lesson-number">${index+1}</div>
+
+          <span class="lesson-type">
+            ${item.type}
+          </span>
+
+        </div>
+
+        <div class="lesson-body">
+
+          <h3>${escapeHTML(item.title)}</h3>
+
+          <p>${escapeHTML(item.description)}</p>
+
+          <div class="lesson-actions">
+
+            <button class="btn btn-primary"
+              onclick="openResource(${item.id})">
+              فتح المورد
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   TEACHER LOGIN
+========================================================= */
+
+function teacherLogin(){
+
+  const password =
+    document.getElementById("teacherPassword").value;
+
+  if(password!=="1234"){
+
+    showToast("❌ كلمة المرور غير صحيحة.");
+
+    return;
+
+  }
+
+  closeModal("teacherModal");
+
+  document.getElementById("teacherPassword").value="";
+
+  openTeacherDashboard();
+
+}
+
+
+function openTeacherDashboard(){
+
+  document.getElementById("teacherDashboard")
+    .classList.add("show");
+
+  updateDashboard();
+
+}
+
+
+function closeDashboard(){
+
+  document.getElementById("teacherDashboard")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   TEACHER DASHBOARD
+========================================================= */
+
+function updateDashboard(){
+
+  const contents = getContents();
+  const students = getStudents();
+
+  const lessons =
+    contents.filter(x=>x.type==="درس" || x.type==="ملخص").length;
+
+  const exercises =
+    contents.filter(x=>x.type==="تمرين" || x.type==="اختبار").length;
+
+
+  document.getElementById("dashContents")
+    .textContent = contents.length;
+
+  document.getElementById("dashStudents")
+    .textContent = students.length;
+
+  document.getElementById("dashLessons")
+    .textContent = lessons;
+
+  document.getElementById("dashExercises")
+    .textContent = exercises;
+
+
+  renderContentTable();
+
+  renderStudentTable();
+
+  renderRecentContent();
+
+  renderRanking("teacherRanking");
+
+}
+
+
+/* =========================================================
+   DASH TABS
+========================================================= */
+
+function dashTab(tab,button){
+
+  document.querySelectorAll(".dash-tab")
+    .forEach(x=>x.classList.remove("active"));
+
+  if(button)
+    button.classList.add("active");
+
+
+  document.querySelectorAll(".dash-panel")
+    .forEach(x=>x.classList.remove("active"));
+
+  document.getElementById("panel-"+tab)
+    .classList.add("active");
+
+}
+
+
+/* =========================================================
+   ADD CONTENT
+========================================================= */
+
+function openAdd(type){
+
+  openModal("contentModal");
+
+  document.getElementById("contentType")
+    .value = type || "درس";
+
+  document.getElementById("contentTitle").value="";
+  document.getElementById("contentUnit").value="";
+  document.getElementById("contentDescription").value="";
+
+}
+
+
+function saveContent(){
+
+  const type =
+    document.getElementById("contentType").value;
+
+  const title =
+    document.getElementById("contentTitle").value.trim();
+
+  const level =
+    document.getElementById("contentLevel").value;
+
+  const unit =
+    document.getElementById("contentUnit").value.trim();
+
+  const description =
+    document.getElementById("contentDescription").value.trim();
+
+
+  if(!title){
+
+    showToast("⚠️ اكتب عنوان المورد.");
+
+    return;
+
+  }
+
+
+  const contents = getContents();
+
+  contents.unshift({
+
+    id:Date.now(),
+
+    type:type,
+
+    title:title,
+
+    level:level,
+
+    unit:unit || "عام",
+
+    description:
+      description || "مورد تعليمي في الرياضيات.",
+
+    date:
+      new Date().toLocaleDateString("ar-DZ")
+
+  });
+
+
+  saveContents(contents);
+
+  closeModal("contentModal");
+
+  renderLessons();
+
+  updateDashboard();
+
+  updatePublicStats();
+
+  showToast("✅ تمت إضافة المورد بنجاح.");
+
+}
+
+
+/* =========================================================
+   CONTENT TABLE
+========================================================= */
+
+function renderContentTable(){
+
+  const table =
+    document.getElementById("contentTable");
+
+  if(!table) return;
+
+  const contents = getContents();
+
+  table.innerHTML =
+    contents.map(item=>`
+
+      <tr>
+
+        <td>
+          <strong>${escapeHTML(item.title)}</strong>
+        </td>
+
+        <td>${escapeHTML(item.type)}</td>
+
+        <td>${escapeHTML(item.level)}</td>
+
+        <td>${escapeHTML(item.unit)}</td>
+
+        <td>
+
+          <button
+            class="table-btn btn-danger"
+            onclick="deleteContent(${item.id})">
+            حذف
+          </button>
+
+        </td>
+
+      </tr>
+
+    `).join("");
+
+}
+
+
+function deleteContent(id){
+
+  if(!confirm("هل تريد حذف هذا المورد؟"))
+    return;
+
+  let contents =
+    getContents()
+      .filter(x=>x.id!==id);
+
+  saveContents(contents);
+
+  renderLessons();
+
+  updateDashboard();
+
+  updatePublicStats();
+
+  showToast("🗑️ تم حذف المورد.");
+
+}
+
+
+/* =========================================================
+   RECENT CONTENT
+========================================================= */
+
+function renderRecentContent(){
+
+  const table =
+    document.getElementById("recentContent");
+
+  if(!table) return;
+
+  const contents =
+    getContents().slice(0,5);
+
+  table.innerHTML =
+    contents.map(item=>`
+
+      <tr>
+
+        <td>${escapeHTML(item.title)}</td>
+
+        <td>${escapeHTML(item.type)}</td>
+
+        <td>${escapeHTML(item.level)}</td>
+
+        <td>${item.date || "اليوم"}</td>
+
+      </tr>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   STUDENT TABLE
+========================================================= */
+
+function renderStudentTable(){
+
+  const table =
+    document.getElementById("studentTable");
+
+  if(!table) return;
+
+  const students =
+    getStudents();
+
+  if(!students.length){
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="6" class="empty">
+          لا يوجد تلاميذ مسجلون بعد.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+
+  table.innerHTML =
+    students.map((student,index)=>`
+
+      <tr>
+
+        <td>
+          <strong>${escapeHTML(student.name)}</strong>
+        </td>
+
+        <td>${escapeHTML(student.level)}</td>
+
+        <td>${escapeHTML(student.className || "-")}</td>
+
+        <td>🏆 ${student.xp}</td>
+
+        <td>
+          ${calculateStudentLevel(student.xp).name}
+        </td>
+
+        <td>
+
+          <button
+            class="table-btn btn-danger"
+            onclick="deleteStudent(${index})">
+            حذف
+          </button>
+
+        </td>
+
+      </tr>
+
+    `).join("");
+
+}
+
+
+function deleteStudent(index){
+
+  if(!confirm("هل تريد حذف هذا التلميذ؟"))
+    return;
+
+  const students =
+    getStudents();
+
+  students.splice(index,1);
+
+  saveStudents(students);
+
+  updateDashboard();
+
+  updatePublicStats();
+
+  showToast("🗑️ تم حذف التلميذ.");
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+const quizQuestions = [
+
+  {
+    q:"كم يساوي 2³ ؟",
+    options:["4","6","8","9"],
+    answer:2
+  },
+
+  {
+    q:"ما هو PGCD(48 ; 18) ؟",
+    options:["3","6","9","12"],
+    answer:1
+  },
+
+  {
+    q:"مثلث قائم ضلعاه القائمان 3 و4. ما طول الوتر؟",
+    options:["5","6","7","8"],
+    answer:0
+  },
+
+  {
+    q:"كم يساوي 5² ؟",
+    options:["10","15","20","25"],
+    answer:3
+  },
+
+  {
+    q:"إذا كان x + 5 = 12 فإن x يساوي:",
+    options:["5","6","7","8"],
+    answer:2
+  }
+
+];
+
+
+let currentQuestion=0;
+let quizScore=0;
+let quizLocked=false;
+
+
+function startQuiz(){
+
+  currentQuestion=0;
+  quizScore=0;
+  quizLocked=false;
+
+  openModal("quizModal");
+
+  showQuizQuestion();
+
+}
+
+
+function showQuizQuestion(){
+
+  const area =
+    document.getElementById("quizArea");
+
+  const q =
+    quizQuestions[currentQuestion];
+
+  area.innerHTML = `
+
+    <div style="margin-bottom:12px;color:var(--muted);font-size:12px">
+      السؤال ${currentQuestion+1} من ${quizQuestions.length}
+    </div>
+
+    <div class="progress" style="margin-bottom:22px">
+      <span style="width:${((currentQuestion+1)/quizQuestions.length)*100}%"></span>
+    </div>
+
+    <div class="quiz-question">
+      ${q.q}
+    </div>
+
+    <div class="options">
+
+      ${q.options.map((option,index)=>`
+
+        <button
+          class="option"
+          onclick="answerQuiz(${index})">
+          ${option}
+        </button>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+function answerQuiz(index){
+
+  if(quizLocked) return;
+
+  quizLocked=true;
+
+  const q =
+    quizQuestions[currentQuestion];
+
+  const buttons =
+    document.querySelectorAll("#quizArea .option");
+
+  buttons.forEach((btn,i)=>{
+
+    if(i===q.answer)
+      btn.classList.add("correct");
+
+    if(i===index && i!==q.answer)
+      btn.classList.add("wrong");
+
+  });
+
+
+  if(index===q.answer)
+    quizScore++;
+
+
+  setTimeout(()=>{
+
+    currentQuestion++;
+
+    quizLocked=false;
+
+    if(currentQuestion<quizQuestions.length){
+
+      showQuizQuestion();
+
+    }else{
+
+      finishQuiz();
+
+    }
+
+  },800);
+
+}
+
+
+function finishQuiz(){
+
+  const percentage =
+    Math.round(
+      (quizScore/quizQuestions.length)*100
+    );
+
+
+  const current =
+    JSON.parse(
+      localStorage.getItem("current_student") || "null"
+    );
+
+
+  if(current){
+
+    let students =
+      getStudents();
+
+    const index =
+      students.findIndex(
+        x=>x.id===current.id
+      );
+
+    if(index!==-1){
+
+      const points =
+        quizScore*10;
+
+      students[index].xp += points;
+
+      students[index].quizzes =
+        (students[index].quizzes || 0)+1;
+
+      saveStudents(students);
+
+      localStorage.setItem(
+        "current_student",
+        JSON.stringify(students[index])
+      );
+
+    }
+
+  }
+
+
+  document.getElementById("quizArea").innerHTML = `
+
+    <div style="text-align:center;padding:20px">
+
+      <div style="font-size:60px">🏆</div>
+
+      <h2>انتهى الاختبار!</h2>
+
+      <p style="color:var(--muted);margin:10px 0 20px">
+        حصلت على ${quizScore} من ${quizQuestions.length}
+        <br>
+        النتيجة: ${percentage}%
+      </p>
+
+      <button
+        class="btn btn-primary"
+        onclick="closeModal('quizModal');refreshStudentDashboard()">
+        العودة
+      </button>
+
+    </div>
+
+  `;
+
+
+  showToast(
+    "🎉 أحسنت! حصلت على "+
+    (quizScore*10)+
+    " نقطة."
+  );
+
+}
+
+
+function refreshStudentDashboard(){
+
+  const current =
+    JSON.parse(
+      localStorage.getItem("current_student") || "null"
+    );
+
+  if(current){
+
+    const students =
+      getStudents();
+
+    const updated =
+      students.find(x=>x.id===current.id);
+
+    if(updated){
+
+      localStorage.setItem(
+        "current_student",
+        JSON.stringify(updated)
+      );
+
+      openStudentDashboard(updated);
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   RANKING
+========================================================= */
+
+function renderRanking(elementId){
+
+  const element =
+    document.getElementById(elementId);
+
+  if(!element) return;
+
+  const students =
+    getStudents()
+      .sort((a,b)=>(b.xp||0)-(a.xp||0))
+      .slice(0,10);
+
+
+  if(!students.length){
+
+    element.innerHTML =
+      `<div class="empty">لا توجد نتائج بعد.</div>`;
+
+    return;
+
+  }
+
+
+  element.innerHTML =
+    students.map((student,index)=>`
+
+      <div class="rank-item">
+
+        <div class="rank-number">
+          ${index+1}
+        </div>
+
+        <div style="flex:1">
+
+          <strong>
+            ${escapeHTML(student.name)}
+          </strong>
+
+          <div style="color:var(--muted);font-size:10px">
+            ${escapeHTML(student.level)}
+            ${student.className ? " • "+escapeHTML(student.className) : ""}
+          </div>
+
+        </div>
+
+        <strong>
+          ${student.xp || 0} XP
+        </strong>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   EXPORT STUDENTS
+========================================================= */
+
+function exportStudents(){
+
+  const students =
+    getStudents();
+
+  if(!students.length){
+
+    showToast("لا يوجد تلاميذ لتصديرهم.");
+
+    return;
+
+  }
+
+
+  let csv =
+    "الاسم,المستوى,القسم,النقاط,المستوى الحالي\n";
+
+
+  students.forEach(s=>{
+
+    csv +=
+      `"${s.name}","${s.level}","${s.className || ""}","${s.xp || 0}","${calculateStudentLevel(s.xp || 0).name}"\n`;
+
+  });
+
+
+  downloadFile(
+    csv,
+    "تلاميذ_عالم_الرياضيات.csv",
+    "text/csv;charset=utf-8;"
+  );
+
+}
+
+
+/* =========================================================
+   EXPORT CONTENT
+========================================================= */
+
+function exportContents(){
+
+  const contents =
+    getContents();
+
+  let csv =
+    "العنوان,النوع,المستوى,الوحدة,الوصف\n";
+
+
+  contents.forEach(c=>{
+
+    csv +=
+      `"${c.title}","${c.type}","${c.level}","${c.unit}","${c.description}"\n`;
+
+  });
+
+
+  downloadFile(
+    csv,
+    "موارد_عالم_الرياضيات.csv",
+    "text/csv;charset=utf-8;"
+  );
+
+}
+
+
+function downloadFile(content,fileName,type){
+
+  const blob =
+    new Blob(
+      ["\ufeff"+content],
+      {type:type}
+    );
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const a =
+    document.createElement("a");
+
+  a.href=url;
+
+  a.download=fileName;
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================================================
+   CLEAR DATA
+========================================================= */
+
+function clearAllData(){
+
+  if(!confirm(
+    "هل أنت متأكد؟ سيتم حذف جميع التلاميذ والموارد المضافة."
+  ))
+    return;
+
+
+  localStorage.removeItem("math_students");
+
+  localStorage.removeItem("math_contents");
+
+  localStorage.removeItem("current_student");
+
+  localStorage.removeItem("challenge_points");
+
+  location.reload();
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text){
+
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICK OUTSIDE
+========================================================= */
+
+document.querySelectorAll(".modal").forEach(modal=>{
+
+  modal.addEventListener("click",function(e){
+
+    if(e.target===modal)
+      modal.classList.remove("show");
+
+  });
+
+});
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    document.querySelectorAll(".modal")
+      .forEach(m=>m.classList.remove("show"));
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
